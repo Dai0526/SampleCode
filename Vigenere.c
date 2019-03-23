@@ -20,8 +20,8 @@ int main(int argc, string argv[])
     
     // valid argv, non numeric
     int keyLen = strlen(argv[1]);    
-    char key[keyLen + 1];
-    for(int i = 0; i < keyLen; ++i)
+    char key[keyLen + 1]; // create an array, length is keylength + 1, such that it is end with '\0' character
+    for(int i = 0; i < keyLen; ++i) // initizlize all values of this array with null character.
     {
         key[i] = '\0';
     }
@@ -45,8 +45,8 @@ int main(int argc, string argv[])
     string plainText = get_string("plaintext: ");
     int textLen = strlen(plainText);
     
-    // save anser to cupherText
-    char cipherText[textLen + 1];
+    // save answer to cupherText
+    char cipherText[textLen + 1]; 
     cipherText[textLen] = '\0';
     
     // use longer length for iteratin(for loop)
@@ -61,13 +61,13 @@ int main(int argc, string argv[])
     }
     
     // loop over the plaintext to encrypt
-    int keyIdx = 0;
+    int keyIdx = 0; // we need a keyIdx variable to record the progress, since in some case the key won't move.
     
     for (int i = 0; i < count; ++i)
     {    
-        // Split steps
+        // Split steps 
         keyIdx = keyIdx % keyLen;   // get key index by length if circular needed 
-        char keyChar = key[keyIdx]; // get char from key
+        char keyChar = key[keyIdx]; // get char from key by the index we just got
         int numShift = Shift(keyChar); // get number of shift        
         char target = plainText[i]; // get the character need to be encoded
         
@@ -84,7 +84,7 @@ int main(int argc, string argv[])
         }
         else // handle illegal character
         {
-            cipherText[i] = target;
+            cipherText[i] = target;// if it is illegal, don't do any thing and put it into our array.
         }
         
     }
