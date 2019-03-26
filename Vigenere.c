@@ -48,22 +48,11 @@ int main(int argc, string argv[])
     // save answer to cupherText
     char cipherText[textLen + 1]; 
     cipherText[textLen] = '\0';
-    
-    // use longer length for iteratin(for loop)
-    int count = 0;
-    if (textLen > keyLen)
-    {
-        count = textLen;
-    }
-    else
-    {
-        count = keyLen;
-    }
-    
+        
     // loop over the plaintext to encrypt
     int keyIdx = 0; // we need a keyIdx variable to record the progress, since in some case the key won't move.
     
-    for (int i = 0; i < count; ++i)
+    for (int i = 0; i < keyLen; ++i)
     {    
         // Split steps 
         keyIdx = keyIdx % keyLen;   // get key index by length if circular needed 
