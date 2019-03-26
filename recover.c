@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
     int imgIdx = 0;
     FILE *jpgFile = NULL;
     bool isJpg = false;
-    while (read(data, 1, 512, fPtr) == 512)
+    while (fread(data, 1, 512, fPtr) == 512)
     {
 
 
